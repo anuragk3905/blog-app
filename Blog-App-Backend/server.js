@@ -10,9 +10,9 @@ import cors from "cors"
 config(); //process.env
 
 const app = express();
-
+// {origin:["http://localhost:5173"], credentials : true}
 // use cors middleware
-app.use(cors({origin:["http://localhost:5173"], credentials : true}))
+app.use(cors())
 
 //add body parser middleware
 app.use(express.json())
