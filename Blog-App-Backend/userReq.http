@@ -1,0 +1,67 @@
+### User Register
+
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "firstName" : "Rohit",
+    "lastName" : "Kohli",
+    "email" : "rohit.user@example.com",
+    "password" : "Rohit@12345",
+    "profileImageUrl" : "https://example.com/avatars/author.png"
+}
+
+### User Login
+
+POST http://localhost:4000/common-api/login
+Content-Type: application/json
+
+{
+    "email" : "rohit.user@example.com",
+    "password" : "Rohit@12345"
+}
+
+### logout
+GET http://localhost:4000/common-api/logout
+
+### Get articles
+GET http://localhost:4000/user-api/articles
+
+### add comment
+PUT http://localhost:4000/user-api/articles
+Content-Type: application/json
+
+{
+    "userId" : "69ae8604b2e1f4c618062821",
+    "articleId" : "6989758f98f0e2358f43f71b",
+    "comment" : "test comment"
+}
+
+
+# ADMIN
+
+### block user
+POST http://localhost:4000/admin-api/block/6989663afd2ef16184d69959
+Content-Type: application/json
+
+{
+    "adminId" : "698ac0d5f05559f0d9dcf8ca"
+}
+
+### Unblock user
+POST http://localhost:4000/admin-api/unblock/6989663afd2ef16184d69959
+Content-Type: application/json
+
+{
+    "adminId" : "698ac0d5f05559f0d9dcf8ca"
+}
+
+### change password
+PUT http://localhost:4000/common-api/change-password
+Content-Type: application/json
+
+{
+    "email" : "anurag.user@example.com",
+    "currPassword" : "User@12345",
+    "newPassword" : "Anurag@12345"
+}
