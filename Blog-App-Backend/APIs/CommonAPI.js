@@ -11,12 +11,15 @@ commonRouter.post('/login',async(req,res)=>{
     let userCred = req.body;
     //call authenticate service
     let {token, user} = await authenticate(userCred);
+    // Determine cookie settings based on environment (enable cross-site cookies in production)
+    const isProd = process.env.NODE_ENV === "production" || (process.env.FRONTEND_URL && process.env.FRONTEND_URL.startsWith("https"));
+
     //save token as httpOnly cookie
     res.cookie("token", token, {
-        httpOnly : true,
-        sameSite : "lax",
-        secure : false
-    })
+        httpOnly: true,
+        sameSite: isProd ? "none" : "lax",
+        secure: !!isProd,
+    });
     //send res
     res.status(200).json({message : "login success", payload : user})
 })
@@ -24,10 +27,11 @@ commonRouter.post('/login',async(req,res)=>{
 //logout
 commonRouter.get('/logout',async(req,res)=>{
     //clear the cookie named 'token'
+    const isProd = process.env.NODE_ENV === "production" || (process.env.FRONTEND_URL && process.env.FRONTEND_URL.startsWith("https"));
     res.clearCookie('token',{
-        httpOnly : true,     //Must match original settings
-        secure : false,      //Must match original settings
-        sameSite : "lax"     //Must match original settings
+        httpOnly: true,     // Must match original settings
+        secure: !!isProd,   // Must match original settings
+        sameSite: isProd ? "none" : "lax", // Must match original settings
     });
     res.status(200).json({message : 'Logged out successfully'});
 })
