@@ -12,9 +12,10 @@ config(); //process.env
 const app = express();
 
 const allowedOrigins = [
-  process.env.FRONTEND_URL || "http://localhost:5173",
+  process.env.FRONTEND_URL,
+  "https://blog-app-gsj5.vercel.app",
   "http://localhost:5173",
-];
+].filter(Boolean);
 
 // use cors middleware
 app.use(
