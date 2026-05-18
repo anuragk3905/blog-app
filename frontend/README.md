@@ -18,7 +18,7 @@ React + Vite frontend for the MERN Blog Application. A modern, responsive bloggi
 
 ### Prerequisites
 - Node.js v14+
-- Backend server running on http://localhost:5000
+- Backend server running on https://blog-app-n4a9.onrender.com
 
 ### Installation
 
@@ -273,7 +273,7 @@ function LoginForm() {
 ```javascript
 import axios from 'axios';
 
-const API_URL = process.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.VITE_API_URL || 'https://blog-app-n4a9.onrender.com';
 
 // Get articles
 export const getArticles = async (page, limit) => {
@@ -317,7 +317,7 @@ npm run lint     # Lint code
 
 ### Environment Variables
 ```env
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=https://blog-app-n4a9.onrender.com
 ```
 
 ## 📦 Dependencies

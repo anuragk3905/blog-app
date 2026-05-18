@@ -2,6 +2,7 @@ import { useAuth } from "../store/authStore";
 import { useNavigate } from "react-router";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { api } from "../api";
 import { useEffect, useState } from "react";
 
 import {
@@ -34,7 +35,7 @@ function UserProfile() {
     const getArticles = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:4000/user-api/articles", { withCredentials: true });
+        const res = await api.get("/user-api/articles");
 
         setArticles(res.data.payload);
       } catch (err) {

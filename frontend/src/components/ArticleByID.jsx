@@ -1,6 +1,7 @@
 import { useParams, useLocation, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { api } from "../api";
 import { useAuth } from "../store/authStore";
 import { toast } from "react-hot-toast";
 import {
@@ -40,7 +41,7 @@ function ArticleByID() {
       setLoading(true);
 
       try {
-        const res = await axios.get(`http://localhost:4000/user-api/article/${id}`, { withCredentials: true });
+        const res = await api.get(`/user-api/article/${id}`);
 
         setArticle(res.data.payload);
       } catch (err) {
@@ -70,10 +71,9 @@ function ArticleByID() {
 
     try {
       const authorId = article.author?._id || article.author;
-      const res = await axios.patch(
-        `http://localhost:4000/author-api/articles/${id}/author/${authorId}`,
+      const res = await api.patch(
+        `/author-api/articles/${id}/author/${authorId}`,
         { isArticleActive: newStatus },
-        { withCredentials: true },
       );
 
       console.log("SUCCESS:", res.data);
@@ -105,7 +105,7 @@ function ArticleByID() {
     commentObj.articleId = article._id;
     commentObj.userId = user?._id;
     console.log(commentObj);
-    let res = await axios.put("http://localhost:4000/user-api/articles", commentObj, { withCredentials: true });
+    let res = await api.put("/user-api/articles", commentObj);
     if (res.status === 200) {
       toast.success(res.data.message);
       setArticle(res.data.payload);

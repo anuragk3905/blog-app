@@ -253,7 +253,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 ### Frontend (.env)
 ```
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=https://blog-app-n4a9.onrender.com
 ```
 
 ## 🎨 UI/UX

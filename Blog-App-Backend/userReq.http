@@ -1,6 +1,6 @@
 ### User Register
 
-POST http://localhost:4000/user-api/users
+POST https://blog-app-n4a9.onrender.com/user-api/users
 Content-Type: application/json
 
 {
@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ### User Login
 
-POST http://localhost:4000/common-api/login
+POST https://blog-app-n4a9.onrender.com/common-api/login
 Content-Type: application/json
 
 {
@@ -22,13 +22,13 @@ Content-Type: application/json
 }
 
 ### logout
-GET http://localhost:4000/common-api/logout
+GET https://blog-app-n4a9.onrender.com/common-api/logout
 
 ### Get articles
-GET http://localhost:4000/user-api/articles
+GET https://blog-app-n4a9.onrender.com/user-api/articles
 
 ### add comment
-PUT http://localhost:4000/user-api/articles
+PUT https://blog-app-n4a9.onrender.com/user-api/articles
 Content-Type: application/json
 
 {
@@ -41,7 +41,7 @@ Content-Type: application/json
 # ADMIN
 
 ### block user
-POST http://localhost:4000/admin-api/block/6989663afd2ef16184d69959
+POST https://blog-app-n4a9.onrender.com/admin-api/block/6989663afd2ef16184d69959
 Content-Type: application/json
 
 {
@@ -49,7 +49,7 @@ Content-Type: application/json
 }
 
 ### Unblock user
-POST http://localhost:4000/admin-api/unblock/6989663afd2ef16184d69959
+POST https://blog-app-n4a9.onrender.com/admin-api/unblock/6989663afd2ef16184d69959
 Content-Type: application/json
 
 {
@@ -57,7 +57,7 @@ Content-Type: application/json
 }
 
 ### change password
-PUT http://localhost:4000/common-api/change-password
+PUT https://blog-app-n4a9.onrender.com/common-api/change-password
 Content-Type: application/json
 
 {

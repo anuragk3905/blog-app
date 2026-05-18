@@ -40,7 +40,7 @@ EOF
 npm start
 ```
 
-Server will be running at `http://localhost:5000`
+Server will be running at `https://blog-app-n4a9.onrender.com`
 
 ## 📁 Project Structure
 
@@ -488,7 +488,7 @@ Use the provided `.http` files for testing:
 
 **Or use curl:**
 ```bash
-curl -X GET http://localhost:5000/api/common/articles \
+curl -X GET https://blog-app-n4a9.onrender.com/api/common/articles \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
