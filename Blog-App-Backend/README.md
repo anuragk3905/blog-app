@@ -430,7 +430,7 @@ CLOUDINARY_API_KEY=your_api_key_here
 CLOUDINARY_API_SECRET=your_api_secret_here
 
 # CORS
-FRONTEND_URL=http://localhost:5173
+FRONTEND_URL=https://blog-app-gsj5.vercel.app
 
 # Email (Optional)
 EMAIL_USER=your_email@gmail.com
