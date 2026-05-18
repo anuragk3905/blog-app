@@ -60,8 +60,8 @@ authorRoute.post('/articles', verifyToken("AUTHOR"), async(req,res)=>{
 authorRoute.get('/articles/:authorId', verifyToken("AUTHOR"), async(req,res)=>{
     //get author id
     let authorId = req.params.authorId;
-    //read articles by this author
-    let articles = await ArticleModel.find({author : authorId, isArticleActive : true}).populate("author","firstName email ")
+    //read articles by this author, including both active and deleted
+    let articles = await ArticleModel.find({author : authorId}).populate("author","firstName email ")
     //send res
     res.status(200).json({message : "articles", payload : articles})
 })

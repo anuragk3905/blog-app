@@ -13,6 +13,11 @@ import {
   loadingClass,
   errorClass,
   timestampClass,
+  profileHeaderCard,
+  profileHeaderText,
+  profileHeading,
+  profileSubText,
+  profileAvatar,
 } from "../styles/common.js";
 
 function UserProfile() {
@@ -73,14 +78,16 @@ function UserProfile() {
     <div>
       {error && <p className={errorClass}>{error}</p>}
 
-      <div className="text-end">
-        <p className="text-2xl"> Welcome,{currentUser?.firstName}</p>
-        <img src={currentUser?.profileImageUrl} className="w-14 mr-2 rounded-full block ms-auto" alt="" />
-      </div>
-      <div className="flex justify-end mb-6 mt-3">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={onLogout}>
-          Logout
-        </button>
+      <div className={profileHeaderCard}>
+        <div className={profileHeaderText}>
+          <p className={profileHeading}>Welcome back, {currentUser?.firstName || "Reader"}</p>
+          <p className={profileSubText}>Your saved articles are waiting.</p>
+        </div>
+        <img
+          src={currentUser?.profileImageUrl}
+          className={profileAvatar}
+          alt={currentUser?.firstName || "User"}
+        />
       </div>
 
       <div className={articleGrid}>

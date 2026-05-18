@@ -4,6 +4,7 @@ import axios from "axios";
 export const useAuth = create((set) => ({
   currentUser: null,
   loading: false,
+  authChecked: false,
   isAuthenticated: false,
   error: null,
   login: async (userCredWithRole) => {
@@ -17,6 +18,7 @@ export const useAuth = create((set) => ({
       //update state
       set({
         loading: false,
+        authChecked: true,
         isAuthenticated: true,
         currentUser: res.data.payload, //{message:"",payload:}
       });
@@ -24,6 +26,7 @@ export const useAuth = create((set) => ({
       console.log("err is ", err);
       set({
         loading: false,
+        authChecked: true,
         isAuthenticated: false,
         currentUser: null,
         //error: err,
@@ -40,12 +43,14 @@ export const useAuth = create((set) => ({
       //update state
       set({
         loading: false,
+        authChecked: true,
         isAuthenticated: false,
         currentUser: null,
       });
     } catch (err) {
       set({
         loading: false,
+        authChecked: true,
         isAuthenticated: false,
         currentUser: null,
         error: err.response?.data?.error || "Logout failed",
@@ -55,13 +60,14 @@ export const useAuth = create((set) => ({
   // restore login
   checkAuth: async () => {
     try {
-      set({loading : true});
+      set({ loading: true, authChecked: false });
       const res = await axios.get("http://localhost:4000/common-api/check-auth", { withCredentials: true });
       // console.log(res)
       set({
         currentUser: res.data.payload,
         isAuthenticated: true,
-        loading : false
+        loading: false,
+        authChecked: true,
       });
     } catch (err) {
       // If user is not logged in → do nothing
@@ -69,14 +75,15 @@ export const useAuth = create((set) => ({
         set({
           currentUser: null,
           isAuthenticated: false,
-          loading : false
+          loading: false,
+          authChecked: true,
         });
         return;
       }
 
       // other errors
       console.error("Auth check failed:", err);
-      set({loading : false});
+      set({ loading: false, authChecked: true });
     }
   },
 }));

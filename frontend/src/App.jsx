@@ -1,8 +1,7 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 import RootLayout from "./components/RootLayout";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import Home from "./components/Home";
 import UserProfile from "./components/UserProfile";
 import AuthorProfile from "./components/AuthorProfile";
 import ArticleByID from "./components/ArticleByID";
@@ -21,10 +20,9 @@ function App() {
       element: <RootLayout />,
       errorElement:<ErrorBoundary />,
       children: [
-        ,
         {
-          path: "",
-          element: <Home />,
+          index: true,
+          element: <Navigate to="/login" replace />,
         },
         {
           path: "register",

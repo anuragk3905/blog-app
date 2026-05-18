@@ -45,13 +45,6 @@ function Header() {
         </NavLink>
 
         <ul className={navLinksClass}>
-          {/* Always visible */}
-          <li>
-            <NavLink to="/" end className={({ isActive }) => (isActive ? navLinkActiveClass : navLinkClass)}>
-              Home
-            </NavLink>
-          </li>
-
           {/* Not logged in */}
           {!isAuthenticated && (
             <>

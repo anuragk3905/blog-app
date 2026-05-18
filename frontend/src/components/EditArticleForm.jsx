@@ -39,8 +39,13 @@ function EditArticle() {
   }, [article]);
 
   const updateArticle = async (data) => {
-    console.log(data);
+    if (!article) {
+      return;
+    }
+
     data.articleId = article._id;
+    data.author = article.author?._id || article.author;
+
     let res = await axios.put("http://localhost:4000/author-api/articles", data, { withCredentials: true });
     console.log("res update atricle", res);
     navigate(`/article/${article._id}`, {

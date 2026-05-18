@@ -50,5 +50,10 @@ commonRouter.put('/change-password', verifyToken, async(req,res)=>{
 
 // page refresh
 commonRouter.get('/check-auth',verifyToken("USER","AUTHOR"), async(req,res)=>{
-    res.status(200).json({message : 'authenticated', payload : req.user});
+    const user = await UserTypeModel.findById(req.user.userId).select("-password");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({ message : 'authenticated', payload : user });
 })

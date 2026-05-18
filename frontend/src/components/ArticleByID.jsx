@@ -69,8 +69,9 @@ function ArticleByID() {
     if (!window.confirm(confirmMsg)) return;
 
     try {
+      const authorId = article.author?._id || article.author;
       const res = await axios.patch(
-        `http://localhost:4000/author-api/articles/${id}/status`,
+        `http://localhost:4000/author-api/articles/${id}/author/${authorId}`,
         { isArticleActive: newStatus },
         { withCredentials: true },
       );
@@ -100,8 +101,9 @@ function ArticleByID() {
 
   //post comment by user
   const addComment = async (commentObj) => {
-    //add artcileId
+    //add articleId and userId
     commentObj.articleId = article._id;
+    commentObj.userId = user?._id;
     console.log(commentObj);
     let res = await axios.put("http://localhost:4000/user-api/articles", commentObj, { withCredentials: true });
     if (res.status === 200) {

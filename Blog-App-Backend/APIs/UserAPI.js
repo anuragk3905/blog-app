@@ -44,6 +44,20 @@ userRoute.post(
     }
   },
 );
+//Read single article by id (protected route)
+userRoute.get("/article/:articleId", verifyToken("USER", "AUTHOR"), async (req, res) => {
+  const { articleId } = req.params;
+  const article = await ArticleModel.findById(articleId)
+    .populate("author", "firstName email")
+    .populate("comments.user", "firstName email");
+
+  if (!article) {
+    return res.status(404).json({ message: "Article not found" });
+  }
+
+  res.status(200).json({ message: "article", payload: article });
+});
+
 //Read all articles (protected route)
 userRoute.get("/articles", verifyToken("USER"), async (req, res) => {
   //read articles by this author

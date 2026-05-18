@@ -55,6 +55,12 @@ export const articleExcerpt = "text-sm text-[#6e6e73] leading-relaxed";
 export const articleMeta = "text-xs text-[#a1a1a6]";
 export const articleBody = "text-[#6e6e73] leading-[1.85] text-[0.95rem] max-w-2xl";
 export const timestampClass = "text-xs text-[#a1a1a6] flex items-center gap-1.5";
+export const profileHeaderCard =
+  "bg-white border border-[#e8e8ed] rounded-[28px] p-5 mb-6 flex items-center justify-end gap-4 shadow-sm";
+export const profileHeaderText = "text-right text-[#1d1d1f]";
+export const profileHeading = "text-2xl font-semibold leading-tight";
+export const profileSubText = "text-sm text-[#6e6e73]";
+export const profileAvatar = "w-16 h-16 rounded-full object-cover border border-[#e8e8ed]";
 export const tagClass = "text-[0.65rem] font-semibold text-[#0066cc] uppercase tracking-widest w-fit";
 
 // ─── Article Page ─────────────────────────────────────
